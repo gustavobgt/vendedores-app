@@ -1,0 +1,21 @@
+:root {
+  --color-background: #f0f0f7;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.main {
+  background: var(--color-background);
+}
+
+img {
+  margin-top: 20px;
+}
+
+#logo-div {
+  border-bottom: 1px solid lightgray;
+}

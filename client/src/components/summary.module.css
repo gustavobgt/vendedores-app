@@ -1,0 +1,24 @@
+:root {
+  --color-earning: #16a085;
+  --color-expense: #c0392b;
+}
+
+.card {
+  transition: 0.5s;
+  background: #eee;
+}
+
+.firstAndThirdCard:hover i,
+.firstAndThirdCard p {
+  color: #0baf86;
+}
+
+.secondAndFourthCard:hover i,
+.secondAndFourthCard p {
+  color: #c84550;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  background: #fff;
+}
