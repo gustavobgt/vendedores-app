@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { formatMoney } from '../helpers/formatHelpers';
 import Action from './Action';
 
+import css from './Transaction.module.css';
 import M from 'materialize-css';
 
 const EARNING_COLOR = '#A1F0DC';
@@ -25,7 +26,7 @@ export default function Transaction({
     net_income,
     employee_expenses,
     category,
-    percent,
+    amountOfSales,
   } = transaction;
 
   const handleActionClick = (type) => {
@@ -69,52 +70,57 @@ export default function Transaction({
   const cardsalaryID = `salario${id}`;
 
   return (
-    <div
-      className="card small col s12 m6"
-      style={{
-        border: '1px solid blue',
-      }}
-    >
-      <div className="card-content">
-        <div style={{ ...actionsStyle, ...{ border: '1px solid blue' } }}>
+    <div className="col s12 m6">
+      <div className={`card small  ${css.card}`}>
+        <div className="card-content">
           <div style={descriptionValueStyle}>
             <Action type="edit" onActionClick={handleActionClick} />
+            <h5 className="center">{category}</h5>
             <Action type="delete" onActionClick={handleActionClick} />
           </div>
-        </div>
-        <h5 className="center">{category}</h5>
-        <div className="divider"></div>
-        <div className="center">
-          <p>Pontuação:</p>
-          <a className={circleStyle} style={dateStyle}>
-            {modifiedScore}
-          </a>
-        </div>
-      </div>
 
-      <div className="card-tabs">
-        <ul className="tabs tabs-fixed-width">
-          <li className="tab">
-            <a href={`#${cardSellID}`}>Vendas</a>
-          </li>
-          <li className="tab">
-            <a href={`#${cardNetIncomeID}`}>L.L.</a>
-          </li>
-          <li className="tab">
-            <a href={`#${cardsalaryID}`}>SALÁRIO</a>
-          </li>
-        </ul>
-      </div>
+          <div className="divider"></div>
+          <div className="center">
+            <p>Pontuação:</p>
+            <a className={circleStyle} style={dateStyle}>
+              {modifiedScore}
+            </a>
+          </div>
+        </div>
 
-      <div className="card-content grey lighten-4">
-        <div id={cardSellID}>
-          <h6 className="center">🚗 13 carros</h6>
+        <div className="card-tabs">
+          <ul className="tabs tabs-fixed-width">
+            <li className="tab">
+              <a href={`#${cardSellID}`}>Vendas</a>
+            </li>
+            <li className="tab">
+              <a href={`#${cardNetIncomeID}`}>L.L.</a>
+            </li>
+            <li className="tab">
+              <a href={`#${cardsalaryID}`}>SALÁRIO</a>
+            </li>
+          </ul>
         </div>
-        <div id={cardNetIncomeID}>
-          <h6 className="center">💲 {formatMoney(net_income)}</h6>
-        </div>
-        <div id={cardsalaryID}>
-          <h6 className="center">💸 {formatMoney(employee_expenses)}</h6>
+
+        <div className="card-content grey lighten-4">
+          <div className="center" id={cardSellID}>
+            <span style={{ marginRight: '5px' }}>
+              <i className="small material-icons">directions_car</i>
+            </span>
+            <span style={dateStyle}>{amountOfSales}</span>
+          </div>
+          <div className="center" id={cardNetIncomeID}>
+            <span style={{ marginRight: '5px' }}>
+              <i className="small material-icons">attach_money</i>
+            </span>
+            <span style={dateStyle}>{formatMoney(net_income)}</span>
+          </div>
+          <div className="center" id={cardsalaryID}>
+            <span style={{ marginRight: '5px' }}>
+              <i className="small material-icons">money_off</i>
+            </span>
+            <span style={dateStyle}>{formatMoney(employee_expenses)}</span>
+          </div>
         </div>
       </div>
     </div>
@@ -151,7 +157,7 @@ const styles = {
   descriptionValueStyle: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
   },
 
   dataStyle: {
@@ -189,6 +195,6 @@ const styles = {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
   },
 };

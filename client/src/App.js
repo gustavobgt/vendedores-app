@@ -291,7 +291,7 @@ export default function App() {
         <img width="280px" src={logoImg} alt="Logo Maracar" />
       </div>
 
-      <div id="logo-div" className="container center"></div>
+      <div className="divider container center"></div>
 
       <div className="center">
         <h4>Remuneração de vendedores</h4>
@@ -310,6 +310,9 @@ export default function App() {
       {currentTransactions.length > 0 && (
         <>
           <Summary summary={summary} />
+
+          <div className="divider container center"></div>
+
           <div div className="container">
             {!isModalOpen && (
               <Actions

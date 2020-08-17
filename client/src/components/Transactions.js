@@ -17,7 +17,7 @@ export default function Transactions({
   let currentDay = 1;
 
   return (
-    <div className="row" style={{ border: '1px solid red' }}>
+    <div className="row">
       <div className="col s12">
         {transactions
           .sort((a, b) => {

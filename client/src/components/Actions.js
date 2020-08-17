@@ -10,42 +10,40 @@ export default function Actions({ filterText, onFilter, onNewTransaction }) {
     onNewTransaction();
   };
 
-  const { containerStyle, inputStyle } = styles;
+  const { buttonStyle } = styles;
 
   return (
-    <div style={containerStyle}>
-      <button
-        className="waves-effect waves-light btn"
-        disabled={filterText.trim() !== ''}
-        onClick={handleButtonClick}
-      >
-        + Novo Vendedor
-      </button>
-
-      <div className="input-field" style={inputStyle}>
-        <input
-          placeholder="Filtro"
-          type="text"
-          value={filterText}
-          onChange={handleChangeFilterText}
-        />
+    <>
+      <div className="center" style={{ margin: '20px 0px 10px 0px' }}>
+        <button
+          className="waves-effect waves-light btn"
+          style={buttonStyle}
+          disabled={filterText.trim() !== ''}
+          onClick={handleButtonClick}
+        >
+          + Adicionar Novo Vendedor
+        </button>
       </div>
-    </div>
+
+      <div className="row">
+        <div className="input-field col s12">
+          <i className="material-icons prefix">search</i>
+          <input
+            // placeholder="Filtro"
+            id="filter"
+            type="text"
+            value={filterText}
+            onChange={handleChangeFilterText}
+          />
+          <label htmlFor="filter">Filtro</label>
+        </div>
+      </div>
+    </>
   );
 }
 
 const styles = {
-  containerStyle: {
-    padding: '10px',
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-  },
-
-  inputStyle: {
-    marginLeft: '10px',
-    display: 'flex',
-    flex: 1,
+  buttonStyle: {
+    maxWidth: '700px',
   },
 };
